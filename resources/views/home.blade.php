@@ -58,14 +58,17 @@
                     <h5 class="text-muted">Asal Pengirim:</h5>
                     <div class="form-group">
                         <label for="">Provinsi</label>
-                        <select name="provinsi_pengirim" id="" class="form-control">
-                            <option value="#">-</option>
+                        <select name="province_origin" id="" class="form-control">
+                            <option value="">--Provinsi--</option>
+                            @foreach ($province as $province => $value)
+                            <option value="{{ $province }}"> {{ $value }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="">Kota/Kabupaten</label>
-                        <select name="kotakab_pengirim" id="" class="form-control">
-                            <option value="#">-</option>
+                        <select name="city_origin" id="" class="form-control">
+                            <option value="">-</option>
                         </select>
                     </div>
                     <h5 class="text-muted">Tujuan Pengirim:</h5>
