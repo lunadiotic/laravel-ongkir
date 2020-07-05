@@ -37,22 +37,32 @@ class HomeController extends Controller
         $courier = $request->input('courier');
 
         if ($courier) {
-            $result = [];
+
+            $data = [
+                'origin' => $this->getCity($request->city_origin),
+                'destination' => $this->getCity($request->city_destination),
+                'weight' => 1300,
+                'result' => []
+            ];
 
             foreach ($courier as $value) {
                 $ongkir = RajaOngkir::ongkosKirim([
-                    'origin' => $request->city_origin,
-                    'destination' => $request->city_destination,
-                    'weight' => 1300,
+                    'origin' => $data['origin']->code,
+                    'destination' => $data['destination']->code,
+                    'weight' => $data['weight'],
                     'courier' => $value
                 ])->get();
 
-                $result[] = $ongkir;
+                $data['result'][] = $ongkir;
             }
 
-            return $result;
+            return view('costs')->with($data);
         }
+
+        return redirect()->back();
     }
+
+
 
     public function getProvince()
     {
@@ -62,6 +72,11 @@ class HomeController extends Controller
     public function getCourier()
     {
         return Courier::all();
+    }
+
+    public function getCity($id)
+    {
+        return City::where('code', $id)->first();
     }
 
     public function getCities($provinceId)

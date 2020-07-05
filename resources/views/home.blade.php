@@ -47,55 +47,59 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Formulir Cek Ongkir</h4>
-        </div>
-        <div class="card-body">
-          <form action="{{ route('store') }}" method="POST">
-            @csrf
-              <div class="form-row">
-                  <div class="col">
-                    <h5 class="text-muted">Asal Pengirim:</h5>
-                    <div class="form-group">
-                        <label for="">Provinsi</label>
-                        <select name="province_origin" id="" class="form-control">
-                            <option value="">--Provinsi--</option>
-                            @foreach ($province as $province => $value)
-                            <option value="{{ $province }}"> {{ $value }}</option>
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Formulir Cek Ongkir</h4>
+                </div>
+                <div class="card-body">
+                <form action="{{ route('store') }}" method="POST">
+                    @csrf
+                    <div class="form-row">
+                        <div class="col">
+                            <h5 class="text-muted">Asal Pengirim:</h5>
+                            <div class="form-group">
+                                <label for="">Provinsi</label>
+                                <select name="province_origin" id="" class="form-control">
+                                    <option value="">--Provinsi--</option>
+                                    @foreach ($province as $province => $value)
+                                    <option value="{{ $province }}"> {{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Kota/Kabupaten</label>
+                                <select name="city_origin" id="" class="form-control">
+                                    <option value="">-</option>
+                                </select>
+                            </div>
+                            <h5 class="text-muted">Tujuan Pengirim:</h5>
+                            <div class="form-group">
+                                <label for="">Kota/Kabupaten</label>
+                                <select name="city_destination" id="city_destination" class="form-control">
+                                    <option value="#">-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted">Pilih Expedisi:</h5>
+                            @foreach ($courier as $key => $value)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="courier-{{ $key }}" name="courier[]" value="{{ $value->code }}">
+                                <label class="form-check-label" for="courier-{{ $key }}">{{ $value->title }}</label>
+                            </div>
                             @endforeach
-                        </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="">Kota/Kabupaten</label>
-                        <select name="city_origin" id="" class="form-control">
-                            <option value="">-</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </div>
-                    <h5 class="text-muted">Tujuan Pengirim:</h5>
-                    <div class="form-group">
-                        <label for="">Kota/Kabupaten</label>
-                        <select name="city_destination" id="city_destination" class="form-control">
-                            <option value="#">-</option>
-                        </select>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <h5 class="text-muted">Pilih Expedisi:</h5>
-                    @foreach ($courier as $key => $value)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="courier-{{ $key }}" name="courier[]" value="{{ $value->code }}">
-                        <label class="form-check-label" for="courier-{{ $key }}">{{ $value->title }}</label>
-                    </div>
-                    @endforeach
-                  </div>
-              </div>
-              <div class="form-row">
-                  <div class="col">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-              </div>
-          </form>
+                </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
