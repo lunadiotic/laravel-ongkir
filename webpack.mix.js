@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js([
     'resources/js/app.js',
-    'resources/js/ongkir.js'
+    'resources/js/ongkir.js',
+    'node_modules/select2/dist/js/select2.min.js'
 ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

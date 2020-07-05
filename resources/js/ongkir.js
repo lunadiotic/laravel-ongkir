@@ -17,4 +17,25 @@ $(document).ready(function () {
             $('select[name="city_origin"]').empty();
         }
     });
+
+    $('#city_destination').select2({
+        ajax: {
+            url: "/api/cities",
+            type: "POST",
+            dataType: "json",
+            delay: 150,
+            data: function (params) {
+               return {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    search: $.trim(params.term)
+               }
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    });
 });
