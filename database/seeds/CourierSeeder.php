@@ -14,16 +14,18 @@ class CourierSeeder extends Seeder
     {
         Courier::insert(
             [
-                'code' => 'jne',
-                'title' => 'Jalur Nugraha Ekakurir (JNE)'
-            ],
-            [
-                'code' => 'pos',
-                'title' => 'POS Indonesia'
-            ],
-            [
-                'code' => 'tiki',
-                'title' => 'Citra Van Titipan Kilat'
+                [
+                    'code' => 'jne',
+                    'title' => 'Jalur Nugraha Ekakurir (JNE)'
+                ],
+                [
+                    'code' => 'pos',
+                    'title' => 'POS Indonesia'
+                ],
+                [
+                    'code' => 'tiki',
+                    'title' => 'Citra Van Titipan Kilat'
+                ]
             ]
         );
     }
